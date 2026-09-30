@@ -1,0 +1,3894 @@
+/* ========================================
+    GLOBAL STYLES
+======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding-top: 76px;
+
+    font-family: Arial, sans-serif;
+    background-color: #070B12;
+    color: #F4F7F5;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+a {
+    font-family: inherit;
+}
+
+.container {
+    width: min(1160px, 90%);
+
+    margin: 0 auto;
+}
+
+.card {
+
+    background: #121923;
+
+    border: 1px solid #29333E;
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.card:hover {
+
+    transform: translateY(-8px);
+
+    border-color: #347941;
+
+    box-shadow:
+        0 20px 45px rgba(0, 0, 0, 0.35),
+        0 0 30px rgba(97, 211, 107, 0.08);
+}
+
+.reveal {
+
+    opacity: 0;
+
+    transform: translateY(30px);
+
+    transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
+}
+
+.reveal.visible {
+
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+/* ========================================
+    NAVBAR
+======================================== */
+
+.navbar {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+
+    z-index: 1000;
+
+    /* Same background language as the page */
+    background: rgba(7, 11, 18, 0.38);
+
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+
+    transition:
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+/* Navbar after scrolling */
+
+.navbar.scrolled {
+    background: rgba(7, 11, 18, 0.72);
+
+    box-shadow:
+        0 8px 30px rgba(0, 0, 0, 0.20);
+}
+
+/* ========================================
+    NAVBAR CONTAINER
+======================================== */
+
+.nav-container {
+    width: min(1200px, 92%);
+
+    height: 76px;
+
+    margin: 0 auto;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+
+/* ========================================
+    LOGO
+======================================== */
+
+.nav-logo {
+    text-decoration: none;
+
+    color: #F4F7F5;
+
+    font-size: 1.45rem;
+
+    font-weight: 700;
+
+    letter-spacing: -0.5px;
+}
+
+.nav-logo span {
+    color: #61D36B;
+}
+
+
+/* ========================================
+    NAVIGATION MENU
+======================================== */
+
+.nav-menu {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+}
+
+
+.nav-link {
+    position: relative;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    padding: 9px 15px;
+
+    border-radius: 30px;
+
+    color: #A9B1BB;
+
+    font-size: 0.9rem;
+
+    font-weight: 500;
+
+    text-decoration: none;
+
+    transition:
+        color 0.3s ease,
+        background-color 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.3s ease;
+}
+
+
+/* Hover */
+
+.nav-link:hover {
+    color: #61D36B;
+
+    background-color: rgba(97, 211, 107, 0.06);
+}
+
+
+/* Active section */
+
+.nav-link.active {
+    position: relative;
+
+    color: #61D36B;
+
+    background: rgba(97, 211, 107, 0.13);
+
+    padding: 9px 15px;
+
+    border-radius: 30px;
+
+    box-shadow:
+        0 0 18px rgba(97, 211, 107, 0.08);
+}
+
+
+/* Active glow */
+
+.nav-link.active::before {
+    content: "";
+
+    position: absolute;
+
+    inset: -2px;
+
+    border-radius: 30px;
+
+    background: rgba(97, 211, 107, 0.05);
+
+    z-index: -1;
+
+    filter: blur(7px);
+
+    opacity: 0.6;
+}
+
+
+/* ========================================
+    NAV ACTIONS
+======================================== */
+
+.nav-actions {
+    display: flex;
+
+    align-items: center;
+
+    gap: 16px;
+}
+
+
+/* Let's Talk */
+
+.nav-button {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 12px 20px;
+
+    border-radius: 8px;
+
+    background-color: #11161D;
+
+    color: #F4F7F5;
+
+    text-decoration: none;
+
+    font-size: 0.9rem;
+
+    font-weight: 600;
+
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease,
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+.nav-button:hover {
+    background-color: #61D36B;
+
+    color: #07100A;
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 10px 25px rgba(97, 211, 107, 0.18);
+}
+
+
+/* ========================================
+    MOBILE MENU BUTTON
+======================================== */
+
+.menu-toggle {
+    display: none;
+
+    width: 42px;
+
+    height: 42px;
+
+    border: none;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 5px;
+}
+
+
+.menu-toggle span {
+    display: block;
+
+    width: 24px;
+
+    height: 2px;
+
+    background-color: #F4F7F5;
+
+    border-radius: 10px;
+
+    transition: all 0.3s ease;
+}
+
+/* ========================================
+    MOBILE NAVBAR
+======================================== */
+
+@media (max-width: 900px) {
+
+    .nav-menu {
+        position: absolute;
+
+        top: 76px;
+
+        left: 0;
+
+        width: 100%;
+
+        padding: 24px;
+
+        background-color: rgba(7, 11, 18, 0.96);
+
+        background-image:
+            linear-gradient(
+                rgba(255, 255, 255, 0.018) 1px,
+                transparent 1px
+            ),
+            linear-gradient(
+                90deg,
+                rgba(255, 255, 255, 0.018) 1px,
+                transparent 1px
+            );
+
+        background-size: 60px 60px;
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 8px;
+
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+
+        box-shadow:
+            0 20px 35px rgba(0, 0, 0, 0.35);
+
+        transform: translateY(-20px);
+
+        opacity: 0;
+
+        visibility: hidden;
+
+        transition:
+            opacity 0.3s ease,
+            transform 0.3s ease,
+            visibility 0.3s ease;
+    }
+
+
+    .nav-menu.active {
+        transform: translateY(0);
+
+        opacity: 1;
+
+        visibility: visible;
+    }
+
+
+    .nav-button {
+        display: none;
+    }
+
+
+    .menu-toggle {
+        display: flex;
+    }
+
+
+    .nav-link {
+        width: 100%;
+    }
+
+
+    .menu-toggle.active span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+    }
+
+
+    .menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+
+    .menu-toggle.active span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+    }
+}
+
+/* ========================================
+    HERO
+======================================== */
+
+.hero-section {
+
+    position: relative;
+
+    min-height: calc(100vh - 76px);
+
+    display: flex;
+
+    align-items: center;
+
+    overflow: hidden;
+
+    padding: 65px 0 70px;
+}
+
+
+/* ========================================
+    GRID BACKGROUND
+======================================== */
+
+.hero-grid {
+
+    position: absolute;
+
+    inset: 0;
+
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,0.025) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,0.025) 1px,
+            transparent 1px
+        );
+
+    background-size: 60px 60px;
+
+    pointer-events: none;
+}
+
+
+/* ========================================
+    GREEN GLOW
+======================================== */
+
+.hero-glow {
+
+    position: absolute;
+
+    border-radius: 50%;
+
+    filter: blur(90px);
+
+    pointer-events: none;
+}
+
+
+.hero-glow-one {
+
+    width: 500px;
+
+    height: 500px;
+
+    background: rgba(50, 190, 85, 0.16);
+
+    top: -180px;
+
+    left: 30%;
+}
+
+
+.hero-glow-two {
+
+    width: 350px;
+
+    height: 350px;
+
+    background: rgba(50, 190, 85, 0.10);
+
+    right: 5%;
+
+    bottom: 5%;
+}
+
+
+/* ========================================
+    HERO CONTAINER
+======================================== */
+
+.hero-container {
+
+    position: relative;
+
+    z-index: 2;
+
+    display: grid;
+
+    grid-template-columns: 1.25fr 0.75fr;
+
+    align-items: center;
+
+    gap: 70px;
+}
+
+
+/* ========================================
+    AVAILABILITY BADGE
+======================================== */
+
+.availability-badge {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    padding: 7px 14px;
+
+    margin-bottom: 26px;
+
+    border: 1px solid #29343D;
+
+    border-radius: 50px;
+
+    background: rgba(20, 28, 36, 0.75);
+
+    color: #73D77A;
+
+    font-size: 0.82rem;
+}
+
+
+.status-dot {
+
+    width: 8px;
+
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: #61D36B;
+
+    box-shadow: 0 0 12px rgba(97, 211, 107, 0.8);
+}
+
+
+/* ========================================
+    HERO LABEL
+======================================== */
+
+.hero-label {
+
+    margin-bottom: 8px;
+
+    color: #8B949E;
+
+    font-size: 0.85rem;
+
+    letter-spacing: 5px;
+
+    font-weight: 500;
+}
+
+
+/* ========================================
+    HERO TITLE
+======================================== */
+.hero-title {
+    margin-bottom: 14px;
+
+    font-size: clamp(3rem, 5vw, 4.8rem);
+
+    line-height: 1.05;
+
+    letter-spacing: -2.5px;
+
+    font-weight: 800;
+
+    background: linear-gradient(
+        90deg,
+        #61D36B,
+        #A0E8A4
+    );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+/* ========================================
+    HERO ROLE
+======================================== */
+
+.hero-role {
+
+    margin-bottom: 25px;
+
+    color: #61D36B;
+
+    font-size: 1.05rem;
+
+    line-height: 2;
+}
+
+
+.hero-role span {
+
+    color: #3E7448;
+
+    margin: 0 8px;
+}
+
+
+/* ========================================
+    HERO DESCRIPTION
+======================================== */
+
+.hero-description {
+
+    max-width: 650px;
+
+    margin-bottom: 30px;
+
+    color: #A9B1BB;
+
+    font-size: 1rem;
+
+    line-height: 1.8;
+}
+
+
+/* ========================================
+    BUTTONS
+======================================== */
+
+.hero-buttons {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+
+    margin-bottom: 42px;
+}
+
+
+.primary-button,
+.secondary-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    padding: 13px 22px;
+
+    border-radius: 30px;
+
+    font-size: 0.9rem;
+
+    font-weight: 600;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease,
+        background 0.3s ease;
+}
+
+
+.primary-button {
+
+    background: #46ad4f;
+
+    color: #07100A;
+
+    box-shadow:
+        0 0 25px rgba(97, 211, 107, 0.15);
+}
+
+.primary-button:hover {
+    transform: translateY(-4px) scale(1.02);
+
+    background: #70DF79;
+
+    box-shadow:
+        0 12px 30px rgba(97, 211, 107, 0.25);
+}
+
+.secondary-button {
+
+    border: 1px solid #2D3742;
+
+    background: rgba(18, 25, 35, 0.65);
+
+    color: #F4F7F5;
+}
+
+.secondary-button:hover {
+    transform: translateY(-4px);
+
+    border-color: #61D36B;
+
+    background: rgba(97, 211, 107, 0.07);
+
+    color: #61D36B;
+
+    box-shadow:
+        0 10px 25px rgba(97, 211, 107, 0.07);
+}
+
+
+/* ========================================
+    STATS
+======================================== */
+
+.hero-stats {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(110px, 1fr));
+
+    gap: 12px;
+
+    max-width: 650px;
+}
+
+
+.stat-card {
+
+    padding: 14px;
+
+    border: 1px solid #29333E;
+
+    border-radius: 18px;
+
+    background: rgba(18, 25, 35, 0.8);
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+.stat-card:hover {
+
+    transform: translateY(-7px);
+
+    border-color: #347941;
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.30),
+        0 0 25px rgba(97, 211, 107, 0.08);
+}
+
+
+.stat-card strong {
+
+    display: block;
+
+    margin-bottom: 2px;
+
+    color: #61D36B;
+
+    font-size: 1.35rem;
+
+    font-weight: 500;
+}
+
+
+.stat-card span {
+
+    color: #8F99A4;
+
+    font-size: 0.72rem;
+}
+
+
+/* ========================================
+    PROFILE
+======================================== */
+
+.hero-profile {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+.profile-glow {
+
+    position: absolute;
+
+    width: 350px;
+
+    height: 350px;
+
+    border-radius: 50%;
+
+    background: rgba(70, 210, 100, 0.15);
+
+    filter: blur(70px);
+}
+
+
+.profile-ring {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+}
+
+
+.profile-ring-one {
+    width: 360px;
+    height: 360px;
+
+    border: 1px solid rgba(97, 211, 107, 0.35);
+
+    box-shadow:
+        0 0 30px rgba(97, 211, 107, 0.10),
+        inset 0 0 25px rgba(97, 211, 107, 0.04);
+}
+
+.profile-ring-two {
+    width: 330px;
+    height: 330px;
+
+    border: 4px solid #193B28;
+
+    box-shadow:
+        inset 0 0 0 2px #61D36B,
+        0 0 25px rgba(97, 211, 107, 0.18);
+}
+
+
+.profile-image {
+
+    width: 300px;
+
+    height: 300px;
+
+    overflow: hidden;
+
+    border-radius: 50%;
+
+    border: 4px solid #DCE8DF;
+
+    background: #FFFFFF;
+}
+
+
+.profile-image img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    object-position: center 14%;
+
+    transform: scale(1);
+
+
+    display: block;
+}
+
+@media (max-width: 900px) {
+
+    .hero-container {
+
+        grid-template-columns: 1fr;
+
+        text-align: center;
+
+        gap: 60px;
+    }
+
+
+    .hero-content {
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: center;
+    }
+
+
+    .hero-description {
+
+        max-width: 700px;
+    }
+
+
+    .hero-buttons {
+
+        justify-content: center;
+    }
+
+
+    .hero-stats {
+
+        width: 100%;
+    }
+
+
+    .hero-profile {
+
+        order: -1;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .hero-section {
+
+        padding: 60px 0;
+    }
+
+
+    .hero-title {
+
+        font-size: 3.2rem;
+        white-space: normal;
+        letter-spacing: -2px;
+    }
+
+
+    .hero-role {
+
+        font-size: 0.9rem;
+    }
+
+
+    .hero-stats {
+
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+
+    .profile-ring-one {
+
+        width: 280px;
+
+        height: 280px;
+    }
+
+
+    .profile-ring-two {
+
+        width: 255px;
+
+        height: 255px;
+    }
+
+
+    .profile-image {
+
+        width: 230px;
+
+        height: 230px;
+    }
+
+}
+
+/* ========================================
+    ABOUT SECTION
+======================================== */
+
+.about-section {
+
+    position: relative;
+
+    padding: 110px 0 120px;
+
+    background: #070B12;
+
+    overflow: hidden;
+}
+
+
+/* ========================================
+    SECTION HEADING
+======================================== */
+
+.section-heading {
+
+    margin-bottom: 55px;
+}
+
+
+.section-label {
+
+    margin-bottom: 10px;
+
+    color: #61D36B;
+
+    font-size: 0.78rem;
+
+    font-weight: 600;
+
+    letter-spacing: 5px;
+}
+
+
+.section-title {
+
+    margin: 0;
+
+    color: #F4F7F5;
+
+    font-size: clamp(2.2rem, 4vw, 3rem);
+
+    line-height: 1.15;
+
+    letter-spacing: -1.5px;
+
+    font-weight: 700;
+}
+
+
+.section-line {
+
+    width: 92px;
+
+    height: 1px;
+
+    margin-top: 22px;
+
+    background: linear-gradient(
+        90deg,
+        #61D36B,
+        transparent
+    );
+}
+
+
+/* ========================================
+    ABOUT LAYOUT
+======================================== */
+
+.about-layout {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 24px;
+
+    align-items: start;
+}
+
+
+/* ========================================
+    COMMON ABOUT CARD
+======================================== */
+
+.about-card {
+
+    background: #121923;
+
+    border: 1px solid #29333E;
+
+    border-radius: 24px;
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease;
+}
+
+
+/* ========================================
+    ABOUT CARD HOVER / CARD LIFT
+======================================== */
+
+.about-card:hover {
+
+    transform: translateY(-10px);
+
+    border-color: #347941;
+
+    background: #141D27;
+
+    box-shadow:
+        0 20px 45px rgba(0, 0, 0, 0.35),
+        0 0 30px rgba(97, 211, 107, 0.08);
+}
+
+/* ========================================
+    FIX: CARD LIFT AFTER SCROLL REVEAL
+======================================== */
+
+.about-section .reveal.visible:hover {
+
+    transform: translateY(-8px);
+}   
+
+
+/* ========================================
+    LEFT ABOUT CARD
+======================================== */
+
+.about-intro-card {
+
+    padding: 30px;
+
+    min-height: 330px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: space-between;
+}
+
+
+.about-description {
+
+    margin: 0;
+
+    color: #AEB6C0;
+
+    font-size: 0.95rem;
+
+    line-height: 1.75;
+}
+
+
+/* ========================================
+    ABOUT STATS
+======================================== */
+
+.about-stats {
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 16px;
+
+    margin-top: 30px;
+}
+
+
+.about-stat {
+
+    padding: 18px;
+
+    border: 1px solid #303A45;
+
+    border-radius: 18px;
+
+    background: rgba(255, 255, 255, 0.025);
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        background 0.3s ease;
+}
+
+
+.about-stat:hover {
+
+    transform: translateY(-4px);
+
+    border-color: rgba(97, 211, 107, 0.35);
+
+    background: rgba(97, 211, 107, 0.045);
+}
+
+
+.about-stat strong {
+
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #61D36B;
+
+    font-size: 1.55rem;
+
+    font-weight: 500;
+}
+
+
+.about-stat span {
+
+    color: #8F99A4;
+
+    font-size: 0.75rem;
+}
+
+
+/* ========================================
+    EDUCATION LIST
+======================================== */
+
+.education-list {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 22px;
+}
+
+
+/* ========================================
+    EDUCATION CARD
+======================================== */
+
+.education-card {
+
+    position: relative;
+
+    display: flex;
+
+    gap: 18px;
+
+    padding: 26px;
+
+    min-height: 140px;
+}
+
+
+/* ========================================
+    EDUCATION ICON
+======================================== */
+
+.education-icon {
+
+    flex-shrink: 0;
+
+    width: 38px;
+
+    height: 38px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: rgba(97, 211, 107, 0.12);
+
+    font-size: 17px;
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease;
+}
+
+
+.education-card:hover .education-icon {
+
+    transform: scale(1.08);
+
+    background: rgba(97, 211, 107, 0.18);
+}
+
+
+/* ========================================
+    EDUCATION CONTENT
+======================================== */
+
+.education-content {
+
+    min-width: 0;
+}
+
+
+.education-content h3 {
+
+    margin: 0 0 4px;
+
+    color: #F4F7F5;
+
+    font-size: 1rem;
+
+    font-weight: 700;
+}
+
+
+.education-degree {
+
+    margin: 0 0 3px;
+
+    color: #AEB6C0;
+
+    font-size: 0.9rem;
+}
+
+
+.education-date {
+
+    margin: 0 0 10px;
+
+    color: #8F99A4;
+
+    font-size: 0.75rem;
+}
+
+
+.education-status,
+.education-percentage {
+
+    margin: 0;
+
+    color: #AEB6C0;
+
+    font-size: 0.85rem;
+}
+
+
+.education-status span,
+.education-percentage span {
+
+    color: #61D36B;
+
+    font-weight: 500;
+}
+
+
+.education-achievement {
+
+    margin-top: 8px;
+
+    color: #61D36B;
+
+    font-size: 0.75rem;
+}
+
+
+/* ========================================
+    SCROLL REVEAL
+======================================== */
+
+.about-section .reveal {
+
+    opacity: 0;
+
+    transform: translateY(30px);
+
+    transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
+}
+
+
+.about-section .reveal.visible {
+
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+
+/* ========================================
+    STAGGERED ANIMATION
+======================================== */
+
+.education-card:nth-child(1) {
+
+    transition-delay: 0.05s;
+}
+
+
+.education-card:nth-child(2) {
+
+    transition-delay: 0.15s;
+}
+
+
+.education-card:nth-child(3) {
+
+    transition-delay: 0.25s;
+}
+
+
+/* ========================================
+    RESPONSIVE
+======================================== */
+
+@media (max-width: 900px) {
+
+    .about-section {
+
+        padding: 90px 0;
+    }
+
+
+    .about-layout {
+
+        grid-template-columns: 1fr;
+
+        gap: 24px;
+    }
+
+
+    .about-intro-card {
+
+        min-height: auto;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .about-section {
+
+        padding: 75px 0;
+    }
+
+
+    .section-heading {
+
+        margin-bottom: 35px;
+    }
+
+
+    .section-title {
+
+        font-size: 2rem;
+    }
+
+
+    .about-intro-card {
+
+        padding: 22px;
+    }
+
+
+    .about-stats {
+
+        grid-template-columns: 1fr;
+
+        gap: 12px;
+    }
+
+
+    .education-card {
+
+        padding: 22px;
+
+        gap: 14px;
+    }
+
+}
+
+/* ========================================
+    SKILLS SECTION
+======================================== */
+
+.skills-section {
+
+    position: relative;
+
+    padding: 110px 0 120px;
+
+    background: #070B12;
+
+    overflow: hidden;
+}
+
+
+/* ========================================
+    SKILLS GRID
+======================================== */
+
+.skills-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 20px;
+
+}
+
+
+/* ========================================
+    SKILL CARD
+======================================== */
+
+.skill-card {
+
+    position: relative;
+
+    min-height: 170px;
+
+    padding: 24px;
+
+    background: #121923;
+
+    border: 1px solid #29333E;
+
+    border-radius: 24px;
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease;
+
+}
+
+
+/* ========================================
+    SKILL CARD HOVER
+======================================== */
+
+.skill-card:hover {
+
+    transform: translateY(-8px);
+
+    border-color: rgba(97, 211, 107, 0.55);
+
+    background: #141D27;
+
+    box-shadow:
+        0 20px 45px rgba(0, 0, 0, 0.35),
+        0 0 30px rgba(97, 211, 107, 0.08);
+
+}
+
+
+/* ========================================
+    FIX REVEAL + HOVER
+======================================== */
+
+.skills-section .reveal.visible:hover {
+
+    transform: translateY(-8px);
+
+}
+
+
+/* ========================================
+    SKILL CARD HEADER
+======================================== */
+
+.skill-card-header {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 16px;
+
+}
+
+
+/* ========================================
+    SKILL ICON
+======================================== */
+
+.skill-icon {
+
+    width: 36px;
+
+    height: 36px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: rgba(97, 211, 107, 0.12);
+
+    color: #61D36B;
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+
+}
+
+
+/* SVG */
+
+.skill-icon svg {
+
+    width: 18px;
+
+    height: 18px;
+
+    fill: none;
+
+    stroke: currentColor;
+
+    stroke-width: 1.7;
+
+    stroke-linecap: round;
+
+    stroke-linejoin: round;
+
+}
+
+
+/* ========================================
+    ICON HOVER
+======================================== */
+
+.skill-card:hover .skill-icon {
+
+    transform: scale(1.08);
+
+    background: rgba(97, 211, 107, 0.18);
+
+    box-shadow:
+        0 0 18px rgba(97, 211, 107, 0.08);
+
+}
+
+
+/* ========================================
+    SKILL CARD TITLE
+======================================== */
+
+.skill-card-header h3 {
+
+    margin: 0;
+
+    color: #F4F7F5;
+
+    font-size: 0.82rem;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+}
+
+
+/* ========================================
+    SKILL TAGS
+======================================== */
+
+.skill-tags {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 9px;
+
+}
+
+
+/* ========================================
+    INDIVIDUAL SKILL TAG
+======================================== */
+
+.skill-tag {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    padding: 6px 13px;
+
+    border: 1px solid #303A45;
+
+    border-radius: 30px;
+
+    background: rgba(255, 255, 255, 0.035);
+
+    color: #AEB6C0;
+
+    font-size: 0.75rem;
+
+    line-height: 1;
+
+    transition:
+        border-color 0.3s ease,
+        background 0.3s ease,
+        color 0.3s ease,
+        transform 0.3s ease;
+
+}
+
+
+/* ========================================
+    TAG HOVER
+======================================== */
+
+.skill-tag:hover {
+
+    border-color: rgba(97, 211, 107, 0.35);
+
+    background: rgba(97, 211, 107, 0.06);
+
+    color: #61D36B;
+
+    transform: translateY(-2px);
+
+}
+
+
+/* ========================================
+    SKILLS REVEAL
+======================================== */
+
+.skills-section .reveal {
+
+    opacity: 0;
+
+    transform: translateY(30px);
+
+    transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
+
+}
+
+
+.skills-section .reveal.visible {
+
+    opacity: 1;
+
+    transform: translateY(0);
+
+}
+
+
+/* ========================================
+    SKILLS STAGGER
+======================================== */
+
+.skills-grid .skill-card:nth-child(1) {
+
+    transition-delay: 0.05s;
+
+}
+
+
+.skills-grid .skill-card:nth-child(2) {
+
+    transition-delay: 0.10s;
+
+}
+
+
+.skills-grid .skill-card:nth-child(3) {
+
+    transition-delay: 0.15s;
+
+}
+
+
+.skills-grid .skill-card:nth-child(4) {
+
+    transition-delay: 0.20s;
+
+}
+
+
+.skills-grid .skill-card:nth-child(5) {
+
+    transition-delay: 0.25s;
+
+}
+
+
+.skills-grid .skill-card:nth-child(6) {
+
+    transition-delay: 0.30s;
+
+}
+
+
+/* ========================================
+    TABLET
+======================================== */
+
+@media (max-width: 900px) {
+
+    .skills-section {
+
+        padding: 90px 0;
+
+    }
+
+
+    .skills-grid {
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 18px;
+
+    }
+
+}
+
+
+/* ========================================
+    MOBILE
+======================================== */
+
+@media (max-width: 600px) {
+
+    .skills-section {
+
+        padding: 75px 0;
+
+    }
+
+
+    .skills-grid {
+
+        grid-template-columns: 1fr;
+
+        gap: 16px;
+
+    }
+
+
+    .skill-card {
+
+        min-height: auto;
+
+        padding: 22px;
+
+    }
+
+
+    .skill-card-header {
+
+        margin-bottom: 14px;
+
+    }
+
+}   
+
+/* ========================================
+    EXPERIENCE SECTION
+======================================== */
+
+.experience-section {
+
+    position: relative;
+
+    padding: 110px 0 120px;
+
+    background: #070B12;
+
+    overflow: hidden;
+}
+
+
+/* ========================================
+    EXPERIENCE INTRO CARD
+======================================== */
+
+.experience-intro {
+
+    width: 100%;
+
+    padding: 28px;
+
+    margin-bottom: 48px;
+
+    background: #121923;
+
+    border: 1px solid #29333E;
+
+    border-radius: 24px;
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease;
+}
+
+
+/* ========================================
+    INTRO CARD HOVER
+======================================== */
+
+.experience-intro:hover {
+
+    transform: translateY(-6px);
+
+    border-color: rgba(97, 211, 107, 0.45);
+
+    background: #141D27;
+
+    box-shadow:
+        0 18px 40px rgba(0, 0, 0, 0.30),
+        0 0 25px rgba(97, 211, 107, 0.06);
+}
+
+
+/* ========================================
+    INTRO TEXT
+======================================== */
+
+.experience-intro p {
+
+    margin: 0;
+
+    color: #AEB6C0;
+
+    font-size: 0.95rem;
+
+    line-height: 1.75;
+}
+
+
+/* ========================================
+    EXPERIENCE SUBHEADING
+======================================== */
+
+.experience-subheading {
+
+    margin-bottom: 20px;
+}
+
+
+.experience-subheading h3 {
+
+    margin: 0;
+
+    color: #F4F7F5;
+
+    font-size: 1.25rem;
+
+    font-weight: 700;
+
+    letter-spacing: -0.3px;
+}
+
+
+/* ========================================
+    PLACEMENT GRID
+======================================== */
+
+.placement-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 20px;
+}
+
+
+/* ========================================
+    PLACEMENT CARD
+======================================== */
+
+.placement-card {
+
+    position: relative;
+
+    min-height: 130px;
+
+    padding: 24px;
+
+    background: #121923;
+
+    border: 1px solid #29333E;
+
+    border-radius: 24px;
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease;
+}
+
+
+/* ========================================
+    PLACEMENT CARD HOVER
+======================================== */
+
+.placement-card:hover {
+
+    transform: translateY(-8px);
+
+    border-color: rgba(97, 211, 107, 0.55);
+
+    background: #141D27;
+
+    box-shadow:
+        0 20px 45px rgba(0, 0, 0, 0.35),
+        0 0 30px rgba(97, 211, 107, 0.08);
+}
+
+
+/* ========================================
+    FIX REVEAL + HOVER
+======================================== */
+
+.experience-section .reveal.visible:hover {
+
+    transform: translateY(-8px);
+
+}
+
+
+/* ========================================
+    PLACEMENT HEADER
+======================================== */
+
+.placement-header {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-bottom: 14px;
+}
+
+
+/* ========================================
+    COMPANY NAME
+======================================== */
+
+.placement-header h3 {
+
+    margin: 0;
+
+    color: #F4F7F5;
+
+    font-size: 1rem;
+
+    font-weight: 700;
+
+}
+
+
+/* ========================================
+    SELECTED BADGE
+======================================== */
+
+.placement-status {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 5px 12px;
+
+    border-radius: 30px;
+
+    background: rgba(97, 211, 107, 0.13);
+
+    color: #61D36B;
+
+    font-size: 0.7rem;
+
+    font-weight: 500;
+
+    white-space: nowrap;
+
+    transition:
+        background 0.3s ease,
+        transform 0.3s ease;
+}
+
+
+/* ========================================
+    BADGE HOVER
+======================================== */
+
+.placement-card:hover .placement-status {
+
+    background: rgba(97, 211, 107, 0.18);
+
+    transform: translateY(-1px);
+
+}
+
+
+/* ========================================
+    PLACEMENT INFO
+======================================== */
+
+.placement-info {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+
+/* ========================================
+    PLACEMENT ROLE
+======================================== */
+
+.placement-role {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    color: #AEB6C0;
+
+    font-size: 0.85rem;
+
+    line-height: 1.5;
+}
+
+
+/* ========================================
+    PLACEMENT ICON
+======================================== */
+
+.placement-icon {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 16px;
+
+    height: 16px;
+
+    flex-shrink: 0;
+
+    color: #61D36B;
+}
+
+
+.placement-icon svg {
+
+    width: 16px;
+
+    height: 16px;
+
+    fill: none;
+
+    stroke: currentColor;
+
+    stroke-width: 1.7;
+
+    stroke-linecap: round;
+
+    stroke-linejoin: round;
+}
+
+
+/* ========================================
+    INSTITUTE
+======================================== */
+
+.placement-institute {
+
+    margin: 0;
+
+    color: #8F99A4;
+
+    font-size: 0.75rem;
+}
+
+
+/* ========================================
+    EXPERIENCE REVEAL
+======================================== */
+
+.experience-section .reveal {
+
+    opacity: 0;
+
+    transform: translateY(30px);
+
+    transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
+}
+
+
+.experience-section .reveal.visible {
+
+    opacity: 1;
+
+    transform: translateY(0);
+
+}
+
+
+/* ========================================
+    STAGGERED ANIMATION
+======================================== */
+
+.placement-grid .placement-card:nth-child(1) {
+
+    transition-delay: 0.10s;
+
+}
+
+
+.placement-grid .placement-card:nth-child(2) {
+
+    transition-delay: 0.20s;
+
+}
+
+
+/* ========================================
+    TABLET
+======================================== */
+
+@media (max-width: 900px) {
+
+    .experience-section {
+
+        padding: 90px 0;
+
+    }
+
+
+    .placement-grid {
+
+        grid-template-columns: 1fr;
+
+        gap: 18px;
+
+    }
+
+
+    .experience-intro {
+
+        margin-bottom: 40px;
+
+    }
+
+}
+
+
+/* ========================================
+    MOBILE
+======================================== */
+
+@media (max-width: 600px) {
+
+    .experience-section {
+
+        padding: 75px 0;
+
+    }
+
+
+    .experience-intro {
+
+        padding: 22px;
+
+        margin-bottom: 36px;
+
+    }
+
+
+    .experience-intro p {
+
+        font-size: 0.9rem;
+
+    }
+
+
+    .experience-subheading h3 {
+
+        font-size: 1.15rem;
+
+    }
+
+
+    .placement-card {
+
+        min-height: auto;
+
+        padding: 22px;
+
+    }
+
+
+    .placement-header {
+
+        align-items: flex-start;
+
+    }
+
+
+    .placement-role {
+
+        align-items: flex-start;
+
+        font-size: 0.82rem;
+
+    }
+
+}
+
+/* ========================================
+    PROJECTS SECTION
+======================================== */
+
+.projects-section {
+
+    position: relative;
+
+    padding: 110px 0 120px;
+
+    background: #070B12;
+
+    overflow: hidden;
+}
+
+
+/* ========================================
+    PROJECT GRID
+======================================== */
+
+.projects-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 24px;
+
+}
+
+
+/* ========================================
+    PROJECT CARD
+======================================== */
+
+.project-card {
+
+    position: relative;
+
+    display: flex;
+
+    flex-direction: column;
+
+    min-height: 470px;
+
+    padding: 28px;
+
+    background: #121923;
+
+    border: 1px solid #29333E;
+
+    border-radius: 24px;
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease;
+
+}
+
+
+/* ========================================
+    PROJECT CARD HOVER
+======================================== */
+
+.project-card:hover {
+
+    transform: translateY(-8px);
+
+    border-color: rgba(97, 211, 107, 0.55);
+
+    background: #141D27;
+
+    box-shadow:
+        0 20px 45px rgba(0, 0, 0, 0.35),
+        0 0 30px rgba(97, 211, 107, 0.08);
+
+}
+
+
+/* ========================================
+    FIX REVEAL + HOVER
+======================================== */
+
+.projects-section .reveal.visible:hover {
+
+    transform: translateY(-8px);
+
+}
+
+
+/* ========================================
+    PROJECT HEADER
+======================================== */
+
+.project-header {
+
+    margin-bottom: 14px;
+
+}
+
+
+.project-header h3 {
+
+    margin: 0;
+
+    color: #F4F7F5;
+
+    font-size: 1.15rem;
+
+    font-weight: 700;
+
+    line-height: 1.4;
+
+}
+
+
+/* ========================================
+    PROJECT DESCRIPTION
+======================================== */
+
+.project-description {
+
+    margin: 0 0 26px;
+
+    color: #AEB6C0;
+
+    font-size: 0.9rem;
+
+    line-height: 1.75;
+
+}
+
+
+/* ========================================
+    PROJECT SECTION
+======================================== */
+
+.project-section {
+
+    margin-bottom: 18px;
+
+}
+
+
+/* ========================================
+    PROJECT LABEL
+======================================== */
+
+.project-label {
+
+    margin: 0 0 12px;
+
+    color: #61D36B;
+
+    font-size: 0.72rem;
+
+    font-weight: 600;
+
+    letter-spacing: 4px;
+
+}
+
+
+/* ========================================
+    PROJECT FEATURES
+======================================== */
+
+.project-features {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    column-gap: 24px;
+
+    row-gap: 8px;
+
+}
+
+
+/* ========================================
+    INDIVIDUAL FEATURE
+======================================== */
+
+.project-feature {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 8px;
+
+    color: #AEB6C0;
+
+    font-size: 0.82rem;
+
+    line-height: 1.5;
+
+}
+
+
+/* GREEN BULLET */
+
+.project-feature span {
+
+    flex-shrink: 0;
+
+    color: #61D36B;
+
+    font-size: 1rem;
+
+    line-height: 1.3;
+
+}
+
+
+/* ========================================
+    PROJECT ROLE
+======================================== */
+
+.project-role {
+
+    margin: 0 0 20px;
+
+    color: #AEB6C0;
+
+    font-size: 0.85rem;
+
+    line-height: 1.65;
+
+}
+
+
+.project-role strong {
+
+    color: #F4F7F5;
+
+    font-weight: 600;
+
+}
+
+
+/* ========================================
+    PROJECT TAGS
+======================================== */
+
+.project-tags {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    margin-top: auto;
+
+    padding-top: 4px;
+
+}
+
+
+/* ========================================
+    PROJECT TAG
+======================================== */
+
+.project-tag {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    padding: 6px 12px;
+
+    border: 1px solid #303A45;
+
+    border-radius: 30px;
+
+    background: rgba(255, 255, 255, 0.035);
+
+    color: #AEB6C0;
+
+    font-size: 0.72rem;
+
+    line-height: 1;
+
+    transition:
+        border-color 0.3s ease,
+        background 0.3s ease,
+        color 0.3s ease;
+
+}
+
+
+/* TAG HOVER */
+
+.project-tag:hover {
+
+    border-color: rgba(97, 211, 107, 0.35);
+
+    background: rgba(97, 211, 107, 0.06);
+
+    color: #61D36B;
+
+}
+
+
+/* ========================================
+    PROJECT ACTIONS
+======================================== */
+
+.project-actions {
+
+    display: flex;
+
+    align-items: center;
+
+    margin-top: 26px;
+
+}
+
+
+/* ========================================
+    GITHUB BUTTON
+======================================== */
+
+.github-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 9px;
+
+    padding: 11px 17px;
+
+    border: 1px solid #303A45;
+
+    border-radius: 30px;
+
+    background: rgba(255, 255, 255, 0.025);
+
+    color: #F4F7F5;
+
+    font-size: 0.82rem;
+
+    font-weight: 600;
+
+    text-decoration: none;
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        background 0.3s ease,
+        color 0.3s ease,
+        box-shadow 0.3s ease;
+
+}
+
+
+/* ========================================
+    GITHUB ICON
+======================================== */
+
+.github-button svg {
+
+    width: 17px;
+
+    height: 17px;
+
+    fill: currentColor;
+
+    transition:
+        transform 0.3s ease;
+
+}
+
+
+/* ========================================
+    GITHUB ARROW
+======================================== */
+
+.github-arrow {
+
+    font-size: 0.95rem;
+
+    transition:
+        transform 0.3s ease;
+
+}
+
+
+/* ========================================
+    GITHUB HOVER
+======================================== */
+
+.github-button:hover {
+
+    transform: translateY(-3px);
+
+    border-color: #61D36B;
+
+    background: rgba(97, 211, 107, 0.08);
+
+    color: #61D36B;
+
+    box-shadow:
+        0 10px 25px rgba(97, 211, 107, 0.08);
+
+}
+
+
+.github-button:hover svg {
+
+    transform: scale(1.08);
+
+}
+
+
+.github-button:hover .github-arrow {
+
+    transform: translate(2px, -2px);
+
+}
+
+
+/* ========================================
+    PROJECT REVEAL
+======================================== */
+
+.projects-section .reveal {
+
+    opacity: 0;
+
+    transform: translateY(30px);
+
+    transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
+
+}
+
+
+.projects-section .reveal.visible {
+
+    opacity: 1;
+
+    transform: translateY(0);
+
+}
+
+
+/* ========================================
+    STAGGERED ANIMATION
+======================================== */
+
+.projects-grid .project-card:nth-child(1) {
+
+    transition-delay: 0.10s;
+
+}
+
+
+.projects-grid .project-card:nth-child(2) {
+
+    transition-delay: 0.20s;
+
+}
+
+
+/* ========================================
+    TABLET
+======================================== */
+
+@media (max-width: 900px) {
+
+    .projects-section {
+
+        padding: 90px 0;
+
+    }
+
+
+    .projects-grid {
+
+        grid-template-columns: 1fr;
+
+        gap: 20px;
+
+    }
+
+
+    .project-card {
+
+        min-height: auto;
+
+    }
+
+}
+
+
+/* ========================================
+    MOBILE
+======================================== */
+
+@media (max-width: 600px) {
+
+    .projects-section {
+
+        padding: 75px 0;
+
+    }
+
+
+    .project-card {
+
+        padding: 22px;
+
+        border-radius: 20px;
+
+    }
+
+
+    .project-features {
+
+        grid-template-columns: 1fr;
+
+        gap: 7px;
+
+    }
+
+
+    .project-header h3 {
+
+        font-size: 1.05rem;
+
+    }
+
+
+    .project-description {
+
+        font-size: 0.85rem;
+
+    }
+
+
+    .github-button {
+
+        width: 100%;
+
+    }
+
+}
+
+/* ========================================
+    ACHIEVEMENTS SECTION
+======================================== */
+
+.achievements-section {
+    position: relative;
+    padding: 110px 0 120px;
+    background: #070B12;
+    overflow: hidden;
+}
+
+
+/* ========================================
+    ACHIEVEMENTS GRID
+======================================== */
+
+.achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+
+/* ========================================
+    ACHIEVEMENT CARD
+======================================== */
+
+.achievement-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    min-height: 82px;
+    padding: 20px 24px;
+
+    background: #121923;
+    border: 1px solid #29333E;
+    border-radius: 22px;
+
+    transition:
+        transform .3s ease,
+        border-color .3s ease,
+        background .3s ease,
+        box-shadow .3s ease;
+}
+
+
+/* Hover Effect */
+
+.achievement-card:hover {
+    transform: translateY(-7px);
+    border-color: rgba(97, 211, 107, .55);
+    background: #141D27;
+
+    box-shadow:
+        0 18px 40px rgba(0, 0, 0, .30),
+        0 0 28px rgba(97, 211, 107, .07);
+}
+
+
+/* ========================================
+    ACHIEVEMENT ICON
+======================================== */
+
+.achievement-icon {
+    flex-shrink: 0;
+
+    width: 26px;
+    height: 26px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 20px;
+    line-height: 1;
+}
+
+
+/* ========================================
+    ACHIEVEMENT TEXT
+======================================== */
+
+.achievement-text {
+    margin: 0;
+
+    color: #AEB6C0;
+
+    font-size: .88rem;
+    font-weight: 400;
+
+    line-height: 1.5;
+}
+
+
+/* ========================================
+    REVEAL ANIMATION
+======================================== */
+
+.achievements-section .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+
+    transition:
+        opacity .7s ease,
+        transform .7s ease;
+}
+
+
+.achievements-section .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* Keep hover working after reveal */
+
+.achievements-section .reveal.visible:hover {
+    transform: translateY(-7px);
+}
+
+
+/* ========================================
+    STAGGERED ANIMATION
+======================================== */
+
+.achievements-grid .achievement-card:nth-child(1) {
+    transition-delay: .10s;
+}
+
+.achievements-grid .achievement-card:nth-child(2) {
+    transition-delay: .20s;
+}
+
+.achievements-grid .achievement-card:nth-child(3) {
+    transition-delay: .30s;
+}
+
+.achievements-grid .achievement-card:nth-child(4) {
+    transition-delay: .40s;
+}
+
+
+/* ========================================
+    RESPONSIVE
+======================================== */
+
+@media (max-width: 900px) {
+
+    .achievements-section {
+        padding: 90px 0;
+    }
+
+    .achievements-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .achievements-section {
+        padding: 75px 0;
+    }
+
+    .achievement-card {
+        min-height: 75px;
+        padding: 18px 20px;
+        border-radius: 18px;
+    }
+
+    .achievement-text {
+        font-size: .84rem;
+    }
+
+}
+
+/* ========================================
+    SERVICES SECTION
+======================================== */
+
+.services-section {
+    position: relative;
+    padding: 110px 0 120px;
+    background: #070B12;
+    overflow: hidden;
+}
+
+
+/* ========================================
+    SERVICES GRID
+======================================== */
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+
+/* ========================================
+    SERVICE CARD
+======================================== */
+
+.service-card {
+    position: relative;
+
+    min-height: 195px;
+    padding: 28px;
+
+    background: #121923;
+    border: 1px solid #29333E;
+    border-radius: 22px;
+
+    transition:
+        transform .3s ease,
+        border-color .3s ease,
+        background .3s ease,
+        box-shadow .3s ease;
+}
+
+
+/* ========================================
+    SERVICE CARD HOVER
+======================================== */
+
+.service-card:hover {
+    transform: translateY(-8px);
+
+    border-color: rgba(97, 211, 107, .55);
+
+    background: #141D27;
+
+    box-shadow:
+        0 20px 45px rgba(0, 0, 0, .35),
+        0 0 30px rgba(97, 211, 107, .08);
+}
+
+
+/* Make hover work with reveal animation */
+
+.services-section .reveal.visible:hover {
+    transform: translateY(-8px);
+}
+
+
+/* ========================================
+    SERVICE ICON
+======================================== */
+
+.service-icon {
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 17px;
+
+    border-radius: 50%;
+
+    background: rgba(97, 211, 107, .12);
+
+    color: #61D36B;
+}
+
+
+/* SVG icon */
+
+.service-icon svg {
+    width: 21px;
+    height: 21px;
+
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+
+/* ========================================
+    SERVICE TITLE
+======================================== */
+
+.service-card h3 {
+    margin: 0 0 12px;
+
+    color: #F4F7F5;
+
+    font-size: 1rem;
+    font-weight: 700;
+
+    line-height: 1.4;
+}
+
+
+/* ========================================
+    SERVICE DESCRIPTION
+======================================== */
+
+.service-card p {
+    margin: 0;
+
+    color: #AEB6C0;
+
+    font-size: .86rem;
+
+    line-height: 1.7;
+}
+
+
+/* ========================================
+    REVEAL ANIMATION
+======================================== */
+
+.services-section .reveal {
+    opacity: 0;
+
+    transform: translateY(30px);
+
+    transition:
+        opacity .7s ease,
+        transform .7s ease;
+}
+
+
+.services-section .reveal.visible {
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+
+/* ========================================
+    STAGGERED CARD ANIMATION
+======================================== */
+
+.services-grid .service-card:nth-child(1) {
+    transition-delay: .10s;
+}
+
+.services-grid .service-card:nth-child(2) {
+    transition-delay: .20s;
+}
+
+.services-grid .service-card:nth-child(3) {
+    transition-delay: .30s;
+}
+
+.services-grid .service-card:nth-child(4) {
+    transition-delay: .40s;
+}
+
+
+/* ========================================
+    RESPONSIVE
+======================================== */
+
+@media (max-width: 900px) {
+
+    .services-section {
+        padding: 90px 0;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .services-section {
+        padding: 75px 0;
+    }
+
+    .service-card {
+        min-height: auto;
+        padding: 23px;
+        border-radius: 19px;
+    }
+
+    .service-card h3 {
+        font-size: .96rem;
+    }
+
+    .service-card p {
+        font-size: .83rem;
+    }
+
+}
+
+/* ========================================
+    CONTACT SOCIAL LINKS
+======================================== */
+
+.contact-socials {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.contact-social-link {
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #3A434E;
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, .06);
+
+    color: #F4F7F5;
+
+    text-decoration: none;
+
+    transition:
+        transform .3s ease,
+        border-color .3s ease,
+        background .3s ease,
+        color .3s ease,
+        box-shadow .3s ease;
+}
+
+.contact-social-link svg {
+    width: 17px;
+    height: 17px;
+
+    fill: none;
+    stroke: currentColor;
+
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* GitHub icon */
+
+.contact-social-link:first-child svg {
+    fill: currentColor;
+    stroke: none;
+}
+
+/* Hover */
+
+.contact-social-link:hover {
+    transform: translateY(-4px);
+
+    color: #61D36B;
+
+    border-color: #61D36B;
+
+    background: rgba(97, 211, 107, .10);
+
+    box-shadow:
+        0 10px 25px rgba(97, 211, 107, .10);
+}
+
+
+/* ========================================
+    CONTACT SECTION
+======================================== */
+
+.contact-section {
+    position: relative;
+
+    padding: 110px 0 120px;
+
+    background: #070B12;
+
+    overflow: hidden;
+}
+
+
+/* ========================================
+    CONTACT CARD
+======================================== */
+
+.contact-card {
+    width: min(672px, 100%);
+
+    margin: 56px auto 0;
+
+    padding: 36px;
+
+    background: #121923;
+
+    border: 1px solid #29333E;
+
+    border-radius: 24px;
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, .20);
+
+    transition:
+        transform .3s ease,
+        border-color .3s ease,
+        background .3s ease,
+        box-shadow .3s ease;
+}
+
+
+/* Card hover */
+
+.contact-card:hover {
+    transform: translateY(-6px);
+
+    border-color: rgba(97, 211, 107, .35);
+
+    background: #141D27;
+
+    box-shadow:
+        0 25px 55px rgba(0, 0, 0, .30),
+        0 0 30px rgba(97, 211, 107, .06);
+}
+
+
+/* ========================================
+    CONTACT NAME
+======================================== */
+
+.contact-name {
+    margin: 0 0 8px;
+
+    color: #F4F7F5;
+
+    font-size: 1.15rem;
+
+    font-weight: 700;
+
+    line-height: 1.4;
+}
+
+
+/* ========================================
+    CONTACT ROLE
+======================================== */
+
+.contact-role {
+    margin: 0 0 26px;
+
+    color: #61D36B;
+
+    font-size: .86rem;
+
+    line-height: 1.6;
+}
+
+.contact-role span {
+    color: #61D36B;
+
+    margin: 0 3px;
+}
+
+
+/* ========================================
+    CONTACT INFORMATION
+======================================== */
+
+.contact-info {
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    margin-bottom: 16px;
+
+    color: #AEB6C0;
+
+    font-size: .86rem;
+
+    line-height: 1.5;
+}
+
+
+/* Contact info icons */
+
+.contact-info svg {
+    flex-shrink: 0;
+
+    width: 17px;
+    height: 17px;
+
+    fill: none;
+
+    stroke: #61D36B;
+
+    stroke-width: 1.7;
+
+    stroke-linecap: round;
+
+    stroke-linejoin: round;
+}
+
+
+/* ========================================
+    SOCIAL ICONS
+======================================== */
+
+.contact-socials {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-top: 26px;
+
+    /* VERY IMPORTANT */
+    position: static;
+}
+
+
+/* ========================================
+    SOCIAL BUTTON
+======================================== */
+
+.contact-social-link {
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border: 1px solid #3A434E;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, .06);
+
+    color: #F4F7F5;
+
+    text-decoration: none;
+
+    transition:
+        transform .3s ease,
+        border-color .3s ease,
+        background .3s ease,
+        color .3s ease,
+        box-shadow .3s ease;
+}
+
+
+/* Social SVG */
+
+.contact-social-link svg {
+    width: 17px;
+    height: 17px;
+
+    fill: none;
+
+    stroke: currentColor;
+
+    stroke-width: 1.6;
+
+    stroke-linecap: round;
+
+    stroke-linejoin: round;
+}
+
+
+/* GitHub */
+
+.contact-social-link:first-child svg {
+    fill: currentColor;
+
+    stroke: none;
+}
+
+
+/* ========================================
+    SOCIAL HOVER
+======================================== */
+
+.contact-social-link:hover {
+    transform: translateY(-4px);
+
+    color: #61D36B;
+
+    border-color: #61D36B;
+
+    background: rgba(97, 211, 107, .10);
+
+    box-shadow:
+        0 10px 25px rgba(97, 211, 107, .10);
+}
+
+
+/* ========================================
+    REVEAL ANIMATION
+======================================== */
+
+.contact-section .reveal {
+    opacity: 0;
+
+    transform: translateY(30px);
+
+    transition:
+        opacity .7s ease,
+        transform .7s ease;
+}
+
+
+.contact-section .reveal.visible {
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+
+/* ========================================
+    KEEP CARD HOVER WORKING
+======================================== */
+
+.contact-section .contact-card.reveal.visible:hover {
+    transform: translateY(-6px);
+}
+
+
+/* ========================================
+    RESPONSIVE
+======================================== */
+
+@media (max-width: 900px) {
+
+    .contact-section {
+        padding: 90px 0;
+    }
+
+    .contact-card {
+        margin-top: 45px;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .contact-section {
+        padding: 75px 0;
+    }
+
+    .contact-card {
+        width: 100%;
+
+        padding: 24px;
+
+        border-radius: 20px;
+    }
+
+    .contact-role {
+        font-size: .80rem;
+    }
+
+    .contact-info {
+        font-size: .82rem;
+    }
+
+    .contact-social-link {
+        width: 38px;
+        height: 38px;
+    }
+
+}
+
+/* ========================================
+    FOOTER
+======================================== */
+
+.site-footer {
+    position: relative;
+
+    padding: 40px 20px 34px;
+
+    background: #070B12;
+
+    border-top: 1px solid #202A34;
+
+    text-align: center;
+}
+
+
+/* ========================================
+    FOOTER CONTAINER
+======================================== */
+
+.footer-container {
+    width: min(1160px, 90%);
+
+    margin: 0 auto;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+}
+
+
+/* ========================================
+    COPYRIGHT
+======================================== */
+
+.footer-copyright {
+    margin: 0;
+
+    color: #AEB6C0;
+
+    font-size: .86rem;
+
+    line-height: 1.5;
+}
+
+
+/* ========================================
+    FOOTER DESCRIPTION
+======================================== */
+
+.footer-description {
+    margin: 14px 0 18px;
+
+    color: #AEB6C0;
+
+    font-size: .76rem;
+
+    line-height: 1.6;
+}
+
+
+/* Heart */
+
+.footer-heart {
+    color: #ff4d4d;
+
+    font-size: .95rem;
+}
+
+
+/* ========================================
+    FOOTER SOCIALS
+======================================== */
+
+.footer-socials {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 15px;
+}
+
+
+/* ========================================
+    FOOTER SOCIAL LINK
+======================================== */
+
+.footer-social-link {
+    width: 24px;
+    height: 24px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    color: #AEB6C0;
+
+    text-decoration: none;
+
+    transition:
+        color .3s ease,
+        transform .3s ease;
+}
+
+
+/* ========================================
+    FOOTER ICON
+======================================== */
+
+.footer-social-link svg {
+    width: 17px;
+    height: 17px;
+
+    fill: none;
+
+    stroke: currentColor;
+
+    stroke-width: 1.5;
+
+    stroke-linecap: round;
+
+    stroke-linejoin: round;
+}
+
+
+/* GitHub */
+
+.footer-social-link:first-child svg {
+    fill: currentColor;
+
+    stroke: none;
+}
+
+
+/* ========================================
+    FOOTER HOVER
+======================================== */
+
+.footer-social-link:hover {
+    color: #61D36B;
+
+    transform: translateY(-3px);
+}
+
+
+/* ========================================
+    MOBILE
+======================================== */
+
+@media (max-width: 600px) {
+
+    .site-footer {
+        padding: 34px 18px 28px;
+    }
+
+    .footer-description {
+        font-size: .72rem;
+    }
+
+}
